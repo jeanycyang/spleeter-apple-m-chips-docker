@@ -9,3 +9,6 @@ RUN pip install poetry && pip3 install llvmlite==0.38.0 && cd /spleeter && poetr
 
 RUN cd /spleeter && poetry build && pip install ./dist/spleeter-2.3.0-py3-none-any.whl
 
+WORKDIR /spleeter
+
+RUN mkdir -p /spleeter/pretrained_models/2stems && wget https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems.tar.gz -O /spleeter/pretrained_models/2stems/2stems.tar.gz && cd /spleeter/pretrained_models/2stems/ && tar xvzf /spleeter/pretrained_models/2stems/2stems.tar.gz
